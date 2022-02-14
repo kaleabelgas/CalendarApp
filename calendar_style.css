@@ -18,15 +18,14 @@ h1, h2, h3, h4, h5, h6, p{
     margin: 0%;
     font-size: 1rem;
 }
-body{
+html, body{
     background-color: #f3f3f3;
     font-variation-settings: "wght" 400;
     color:#303030;
+    height: 100%;
+    margin: 0%;
 }
 
-li{
-    margin-top: 2em;
-}
 
 .front-page{
     margin-top: 5%;
@@ -39,6 +38,7 @@ li{
 
 .user-text{
     font-family: Source-Code-Pro;
+    padding:0%
 }
 
 #date-today{
@@ -58,7 +58,7 @@ h1.heading{
     border: black;
     border-width: 2px;
     border-style: solid;
-    border-radius: 10px;
+    border-radius: 15px;
     background-color: white;
 }
 
@@ -66,7 +66,6 @@ h1.heading{
     margin:auto;
     width: 35%;
     padding: 3rem;
-    line-height: 0%;
     text-align: left;
     height: 20rem;
     margin-top: 3%;
@@ -83,4 +82,72 @@ h1.heading{
 a{
     color:#303030;
     text-decoration: none;
+}
+
+.flex-container{
+    padding: 1%;
+    display: flex;
+    height: 100%;
+    flex-direction: row;
+}
+
+.calendar-div{
+    display: block;
+    margin:1%;
+}
+
+.left-div{
+    height: 95%;
+    padding: 0% 2%;
+    flex:25%
+}
+.right-div{
+    display: flex;
+    height: 95%;
+    flex:75%;
+    flex-direction:column;
+}
+
+#nav-container{
+    display: flex;
+    align-items: center;
+    height: 12%;
+    padding: 0% 3%;
+}
+
+#nav-container right-div{
+    display: flex;
+    align-items: center;
+    height: 12%;
+}
+
+.date-name{
+    font-size: 1.2rem;
+}
+
+#calendar{
+    background-color:rgb(216, 216, 216);
+    flex:88%;
+}
+
+#go-to-today{
+    margin-left: auto;
+}
+
+#todo-of-day{
+    margin: -1rem 0rem 2rem 2rem;
+    word-spacing: -0.2rem;
+}
+
+#todo-of-day li{
+    margin-top: 1em;
+}
+
+#front-page-todo{
+    margin-top: 1rem;
+}
+
+
+#front-page-todo li{
+    margin: 1rem 2rem;
 }
