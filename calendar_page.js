@@ -30,21 +30,24 @@ function changeDateSidebar(date) {
 }
 
 
-function selectCurrentDate(year, month, date){
+function selectCurrentDate(year, month, date) {
 
     var previousSelected = document.getElementsByClassName("selected-date")[0];
-    if(previousSelected != undefined){
+    if (previousSelected != undefined) {
         previousSelected.classList.remove("selected-date");
     }
 
-    
-    var selectedDay = document.getElementById(`${year}-${month + 1}-${date}`);
-    console.log(selectedDay.children.children);
+
+    var selectedDay = document.getElementById(`${year}-${month}-${date}`);
     selectedDay.querySelector("div").setAttribute("class", "selected-date");
     changeDateSidebar(new Date(year, month, date));
 
-    console.log(previousSelected);
-    
+
+}
+
+function goToToday(){
+    showCalendar(today.getMonth(), today.getFullYear());
+    selectCurrentDate(today.getFullYear(), today.getMonth(), today.getDate());
 }
 
 function showCalendar(month, year) {
@@ -87,14 +90,14 @@ function showCalendar(month, year) {
                 link = document.createElement("a");
                 cell = document.createElement("td");
                 dateDiv = document.createElement("div");
-                cell.setAttribute("id", `${year}-${month + 1}-${date}`);
+                cell.setAttribute("id", `${year}-${month}-${date}`);
 
-                
-                
+
+
                 link.setAttribute("href", "#");
                 link.setAttribute("onClick", `return selectCurrentDate(${year},${month},${date})`);
-                
-                
+
+
                 cellText = document.createTextNode(date);
 
                 if ((daysInTheMonth + firstDay) % 7 != 0) {
