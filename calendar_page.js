@@ -8,7 +8,6 @@ showCalendar(currentMonth, currentYear);
 changeDateSidebar(today);
 selectCurrentDate(currentYear, currentMonth, today.getDate());
 
-
 function nextMonth() {
     currentYear = (currentMonth === 11) ? currentYear + 1 : currentYear;
     currentMonth = (currentMonth + 1) % 12;
@@ -21,12 +20,30 @@ function previousMonth() {
     showCalendar(currentMonth, currentYear);
 }
 
+var selectedDay;
+var selectedMonth;
+var selectedYear;
+
+function saveWrittenReminderToJSON(element) {
+    localStorage.setItem(`${selectedYear}-${selectedMonth}-${selectedDay}`, element.value);
+    console.log(`${selectedYear}-${selectedMonth}-${selectedDay}`);
+}
+
 function changeDateSidebar(date) {
     dateSelected = document.getElementById("date-sidebar");
     var currentDay = date.getDate();
     var currentMonth = date.toLocaleDateString("default", { month: "long" });
     var currentYear = date.getFullYear();
     dateSelected.innerHTML = `${currentMonth} ${currentDay}, ${currentYear}`;
+
+    reminderOfDate = document.getElementById("todolist");
+    reminderOfDate.value = localStorage.getItem(`${currentYear}-${currentMonth}-${currentDay}`);
+    console.log(`${currentYear}-${currentMonth}-${currentDay}`);
+    console.log(`${selectedYear}-${selectedMonth}-${selectedDay}`);
+
+    selectedDay = currentDay;
+    selectedMonth = currentMonth;
+    selectedYear = currentYear;
 }
 
 
@@ -45,7 +62,7 @@ function selectCurrentDate(year, month, date) {
 
 }
 
-function goToToday(){
+function goToToday() {
     showCalendar(today.getMonth(), today.getFullYear());
     selectCurrentDate(today.getFullYear(), today.getMonth(), today.getDate());
 }

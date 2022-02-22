@@ -62,16 +62,6 @@ h1.heading{
     background-color: white;
 }
 
-#first-page-todo-container{
-    margin:auto;
-    width: 35%;
-    padding: 2rem;
-    text-align: left;
-    height: 20rem;
-    margin-top: 3%;
-    margin-bottom: 2%;
-}
-
 .button{
     text-align: center;
     display: inline-block;
@@ -142,31 +132,21 @@ a{
     word-spacing: -0.2rem;
 } */
 
-textarea{
-    width: 100%;
-    height: 100%;
-    outline: none;
-    resize:none;
-    padding: 1rem;
-    box-sizing: border-box;
-}
-
-textarea .user-text{
-    padding: 10px;
-}
-
-form{
-    height: 80%;
+#first-page-todo-container{
+    margin:auto;
+    width: calc(35%);
+    padding: 2.25rem;
+    text-align: left;
+    height: calc(20rem);
+    margin-top: 3%;
+    overflow-y:auto;
+    text-overflow:ellipsis;
+    margin-bottom: 2%;
 }
 
 #front-page-todo{
-    margin-top: 2rem;
+    margin-top: 1rem;
     padding: 0%;
-}
-
-
-#front-page-todo li{
-    margin: 1rem 2rem;
 }
 
 #calendar table{
@@ -222,12 +202,13 @@ form{
 #calendar div{
     font-size: 0.8rem;
     background: rgb(235, 235, 235);
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 1.6rem;
+    height: 1.6rem;
     line-height: 5px;
     border-radius: 50%;
     text-align: center;
     line-height: 1.5rem;
+    margin: auto;
 }
 
 #calendar a{
@@ -238,4 +219,38 @@ form{
 
 object{
     pointer-events: none;
+}
+
+textarea{
+    width: 100%;
+    height: 100%;
+    outline: none;
+    resize:none;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+textarea .user-text{
+    padding: 10px;
+}
+
+form{
+    height: 80%;
+}
+
+::-webkit-scrollbar{
+    overflow: scroll;
+    width: 1rem;
+    margin-left: 1em;
+}
+
+::-webkit-scrollbar-track{
+    border-radius:100px;
+    box-shadow: inset 0 0 10px 10px lightgray;
+    border: solid 3px transparent;
+}
+::-webkit-scrollbar-thumb{
+    border-radius:25px;
+    box-shadow: inset 0 0 10px 10px darkgray;
+    border: solid 3px transparent;
 }

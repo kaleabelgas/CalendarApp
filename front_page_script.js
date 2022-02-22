@@ -11,6 +11,9 @@ renderCurrentDay();
 function renderCurrentDay(){
     console.log(todayDisplay);
     todayDisplay.innerHTML = `${currentYear}, ${currentMonth} ${currentDay}`;
+
+    frontPageArea = document.getElementById("front-page-todo");
+    frontPageArea.innerHTML = localStorage.getItem(`${currentYear}-${currentMonth}-${currentDay}`);
 }
 
 function update(){
