@@ -6,6 +6,8 @@ const months = ["January", "February", "March", "April", "May", "June", "July", 
 
 showCalendar(currentMonth, currentYear);
 changeDateSidebar(today);
+selectCurrentDate(currentYear, currentMonth, today.getDate());
+
 
 function nextMonth() {
     currentYear = (currentMonth === 11) ? currentYear + 1 : currentYear;
@@ -28,7 +30,22 @@ function changeDateSidebar(date) {
 }
 
 
+function selectCurrentDate(year, month, date){
 
+    var previousSelected = document.getElementsByClassName("selected-date")[0];
+    if(previousSelected != undefined){
+        previousSelected.classList.remove("selected-date");
+    }
+
+    
+    var selectedDay = document.getElementById(`${year}-${month + 1}-${date}`);
+    console.log(selectedDay.children.children);
+    selectedDay.querySelector("div").setAttribute("class", "selected-date");
+    changeDateSidebar(new Date(year, month, date));
+
+    console.log(previousSelected);
+    
+}
 
 function showCalendar(month, year) {
 
@@ -55,9 +72,11 @@ function showCalendar(month, year) {
 
         for (let j = 0; j < 7; j++) {
             if (i === 0 && j < firstDay) {
+                link = document.createElement("a");
                 cell = document.createElement("td");
                 cellText = document.createTextNode("");
-                cell.appendChild(cellText);
+                link.appendChild(cellText);
+                cell.appendChild(link);
                 row.appendChild(cell);
             }
             else if (date > daysInTheMonth) {
@@ -65,27 +84,33 @@ function showCalendar(month, year) {
             }
 
             else {
+                link = document.createElement("a");
                 cell = document.createElement("td");
-                text = document.createElement("div");
+                dateDiv = document.createElement("div");
                 cell.setAttribute("id", `${year}-${month + 1}-${date}`);
+
+                
+                
+                link.setAttribute("href", "#");
+                link.setAttribute("onClick", `return selectCurrentDate(${year},${month},${date})`);
+                
+                
                 cellText = document.createTextNode(date);
 
-
                 if ((daysInTheMonth + firstDay) % 7 != 0) {
-                    if(firstDay + 1 < 6 || daysInTheMonth == 28){
+                    if (firstDay + 1 < 6 || daysInTheMonth == 28) {
                         if (date == 28 - firstDay) {
-                            console.log(daysInTheMonth);
                             cell.setAttribute("style", "border-bottom-right-radius: 10px");
                         }
                     }
-                    else if(date == 36 - (firstDay + 1)){
-                        console.log(daysInTheMonth);
-                            cell.setAttribute("style", "border-bottom-right-radius: 10px");
+                    else if (date == 36 - (firstDay + 1)) {
+                        cell.setAttribute("style", "border-bottom-right-radius: 10px");
                     }
                 }
 
-                text.appendChild(cellText);
-                cell.appendChild(text);
+                dateDiv.appendChild(cellText);
+                link.appendChild(dateDiv);
+                cell.appendChild(link);
                 row.appendChild(cell);
                 date++;
             }
