@@ -27,7 +27,13 @@ function changeDateSidebar(date) {
     dateSelected.innerHTML = `${currentMonth} ${currentDay}, ${currentYear}`;
 }
 
+
+
+
 function showCalendar(month, year) {
+
+    sheet = document.styleSheets[0];
+
     let firstDay = (new Date(year, month)).getDay();
 
     calendarMonth = document.getElementById("calendar-month");
@@ -36,6 +42,8 @@ function showCalendar(month, year) {
     tbl = document.getElementById("calendar-body");
 
     tbl.innerHTML = "";
+
+
 
 
 
@@ -65,11 +73,7 @@ function showCalendar(month, year) {
         }
         tbl.appendChild(row);
 
-        var sheet = document.styleSheets[0];
 
-        if ((daysInMonth(month, year) + firstDay) % 7 != 0) {
-            sheet.insertRule("#calendar tr:nth-last-child(2) td:last-child {border-bottom-right-radius: 10px;}");
-        }
 
         var mytable = document.getElementById("calendar-body");
         var myrows = mytable.getElementsByTagName("tr");
@@ -77,6 +81,14 @@ function showCalendar(month, year) {
         var mycells = lastrow.getElementsByTagName("td");
         var lastcell = mycells[mycells.length - 1].textContent;
         if (lastcell == daysInMonth(month, year)) break;
+    }
+
+
+    if ((daysInMonth(month, year) + firstDay) % 7 != 0 && sheet.cssRules.length == 38) {
+        sheet.insertRule("#calendar tr:nth-last-child(2) td:last-child {border-bottom-right-radius: 10px;}", 38);
+    }
+    else if ((daysInMonth(month, year) + firstDay) % 7 == 0) {
+        sheet.deleteRule(38)
     }
 
 }
