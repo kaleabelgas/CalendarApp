@@ -191,14 +191,24 @@ a{
     border: black;
     border-style:solid;
     border-width: 1px;
-    font-size: .8rem;
     vertical-align: top;
-    text-align: left;
+    background-color: white;
 }
 
 #calendar thead{
     font-size: .8rem;
     border-style:none;
+}
+
+#calendar div{
+    font-size: 0.8rem;
+    background: rgb(235, 235, 235);
+    width: 1.5rem;
+    height: 1.5rem;
+    line-height: 5px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 1.5rem;
 }
 
 object{

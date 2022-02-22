@@ -64,8 +64,13 @@ function showCalendar(month, year) {
 
             else {
                 cell = document.createElement("td");
+                text = document.createElement("div");
+                cell.setAttribute("id", `${year}-${month+1}-${date}`);
                 cellText = document.createTextNode(date);
-                cell.appendChild(cellText);
+
+
+                text.appendChild(cellText);
+                cell.appendChild(text);
                 row.appendChild(cell);
                 date++;
             }
