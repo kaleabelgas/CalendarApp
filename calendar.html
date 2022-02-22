@@ -1,54 +1,64 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link href="calendar_style.css" rel="stylesheet">
-    </head>
-    <body>
-        <div class="flex-container">
-            <div class="calendar-div rounded-box left-div">
-                <div id="nav-container">
-                    <h3 class="ui-text heading date-name" id="date-sidebar">February 13, 2022</h3>
-                </div>
-                <ul id="todo-of-day" class="user-text">
-                    <li>lorem ipsum dolor sit amet</li>
-                    <li>temp</li>
-                    <li>temp</li>
-                    <li>temp</li>
-                </ul>
-            </div>
 
-            <div class="calendar-div right-div">
-                <div id="nav-container">
+<head>
+    <meta property="og:title" content="Almanac">
+    <meta property="og:description" content="Basic calendar where you can save and delete events.">
+    <meta property="og:image" content="Preview.png">
+    <meta property="og:url" content="https://kaleabelgas.github.io/CalendarApp/calendar.html">
+    <link href="calendar_style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="flex-container">
+        <div class="calendar-div rounded-box left-div">
+            <div id="nav-container">
+                <h3 class="ui-text heading date-name" id="date-sidebar">February 13, 2022</h3>
+            </div>
+            <ul id="todo-of-day" class="user-text">
+                <li>lorem ipsum dolor sit amet</li>
+                <li>temp</li>
+                <li>temp</li>
+                <li>temp</li>
+            </ul>
+        </div>
+
+        <div class="calendar-div right-div">
+            <div id="nav-container">
+                <a href="#">
                     <object data="Left.svg">
                         <img src="Left.png">
                     </object>
+                </a>
+                <a href="#">
                     <object data="Right.svg">
                         <img src="Right.png">
                     </object>
-                    <h3 class="ui-text heading date-name" id="calendar-month">February</h3>
-                    <a class="button rounded-box ui-text" href="#" id="go-to-today">Go to today</a>
-                </div>
-                <div id="calendar" class="ui-text">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Sun</th>
-                                <th>Mon</th>
-                                <th>Tue</th>
-                                <th>Wed</th>
-                                <th>Thu</th>
-                                <th>Fri</th>
-                                <th>Sat</th>
-                            </tr>
-                        </thead>
-                        <tbody id="calendar-body">
+                </a>
+                <h3 class="ui-text heading date-name" id="calendar-month">February</h3>
+                <a class="button rounded-box ui-text" href="#" id="go-to-today">Go to today</a>
+            </div>
+            <div id="calendar" class="ui-text">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Sun</th>
+                            <th>Mon</th>
+                            <th>Tue</th>
+                            <th>Wed</th>
+                            <th>Thu</th>
+                            <th>Fri</th>
+                            <th>Sat</th>
+                        </tr>
+                    </thead>
+                    <tbody id="calendar-body">
 
-                        </tbody>
-                    </table>
-                </div>
+                    </tbody>
+                </table>
             </div>
         </div>
-        <script src="calendar_page.js"></script>
-    </body>
+    </div>
+    <script src="calendar_page.js"></script>
+</body>
 
 </html>
