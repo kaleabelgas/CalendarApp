@@ -7,7 +7,7 @@
         <div class="flex-container">
             <div class="calendar-div rounded-box left-div">
                 <div id="nav-container">
-                    <h3 class="ui-text heading date-name">February 13, 2022</h3>
+                    <h3 class="ui-text heading date-name" id="date-sidebar">February 13, 2022</h3>
                 </div>
                 <ul id="todo-of-day" class="user-text">
                     <li>lorem ipsum dolor sit amet</li>
@@ -19,12 +19,36 @@
 
             <div class="calendar-div right-div">
                 <div id="nav-container">
-                    <h3 class="ui-text heading date-name">February</h3>
+                    <object data="Left.svg">
+                        <img src="Left.png">
+                    </object>
+                    <object data="Right.svg">
+                        <img src="Right.png">
+                    </object>
+                    <h3 class="ui-text heading date-name" id="calendar-month">February</h3>
                     <a class="button rounded-box ui-text" href="#" id="go-to-today">Go to today</a>
                 </div>
-                <div id="calendar"></div>
+                <div id="calendar" class="ui-text">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Sun</th>
+                                <th>Mon</th>
+                                <th>Tue</th>
+                                <th>Wed</th>
+                                <th>Thu</th>
+                                <th>Fri</th>
+                                <th>Sat</th>
+                            </tr>
+                        </thead>
+                        <tbody id="calendar-body">
+
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
+        <script src="calendar_page.js"></script>
     </body>
 
 </html>

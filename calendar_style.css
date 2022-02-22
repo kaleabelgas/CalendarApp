@@ -28,7 +28,7 @@ html, body{
 
 
 .front-page{
-    margin-top: 5%;
+    padding-top: 5%;
     text-align: center;
 }
 
@@ -56,9 +56,9 @@ h1.heading{
 
 .rounded-box{
     border: black;
-    border-width: 2px;
+    border-width: 1px;
     border-style: solid;
-    border-radius: 15px;
+    border-radius: 10px;
     background-color: white;
 }
 
@@ -75,7 +75,7 @@ h1.heading{
 .button{
     text-align: center;
     display: inline-block;
-    padding: 1rem 3rem 1rem 3rem;
+    padding: .5rem 3rem .5rem 3rem;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
 }
 
@@ -112,7 +112,7 @@ a{
     display: flex;
     align-items: center;
     height: 12%;
-    padding: 0% 3%;
+    padding: 0% 2%;
 }
 
 #nav-container right-div{
@@ -125,8 +125,11 @@ a{
     font-size: 1.2rem;
 }
 
+#calendar-month{
+    margin-left: 1rem;
+}
+
 #calendar{
-    background-color:rgb(216, 216, 216);
     flex:88%;
 }
 
@@ -150,4 +153,52 @@ a{
 
 #front-page-todo li{
     margin: 1rem 2rem;
+}
+
+#calendar table{
+    width: 100%;
+    height: 100%;
+    table-layout: fixed;
+    border-spacing: 0;
+    /* border-collapse:collapse; */
+}
+
+#calendar tbody:before {
+    content:"@";
+    display:block;
+    line-height:.3rem;
+    text-indent:-99999px;
+}
+
+#calendar tr:first-child td:first-child {
+    border-top-left-radius: 10px;
+}
+
+#calendar tr:first-child td:last-child {
+    border-top-right-radius: 10px;
+}
+
+#calendar tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+}
+
+
+
+#calendar tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+}
+
+#calendar td{
+    padding: 1rem;
+    border: black;
+    border-style:solid;
+    border-width: 1px;
+    font-size: .8rem;
+    vertical-align: top;
+    text-align: left;
+}
+
+#calendar thead{
+    font-size: .8rem;
+    border-style:none;
 }
