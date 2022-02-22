@@ -43,6 +43,8 @@ function showCalendar(month, year) {
 
     tbl.innerHTML = "";
 
+    daysInTheMonth = daysInMonth(month, year);
+
 
 
 
@@ -58,27 +60,37 @@ function showCalendar(month, year) {
                 cell.appendChild(cellText);
                 row.appendChild(cell);
             }
-            else if (date > daysInMonth(month, year)) {
+            else if (date > daysInTheMonth) {
                 break;
             }
 
             else {
                 cell = document.createElement("td");
                 text = document.createElement("div");
-                cell.setAttribute("id", `${year}-${month+1}-${date}`);
+                cell.setAttribute("id", `${year}-${month + 1}-${date}`);
                 cellText = document.createTextNode(date);
 
+
+                if ((daysInTheMonth + firstDay) % 7 != 0) {
+                    if(firstDay + 1 < 6 || daysInTheMonth == 28){
+                        if (date == 28 - firstDay) {
+                            console.log(daysInTheMonth);
+                            cell.setAttribute("style", "border-bottom-right-radius: 10px");
+                        }
+                    }
+                    else if(date == 36 - (firstDay + 1)){
+                        console.log(daysInTheMonth);
+                            cell.setAttribute("style", "border-bottom-right-radius: 10px");
+                    }
+                }
 
                 text.appendChild(cellText);
                 cell.appendChild(text);
                 row.appendChild(cell);
                 date++;
             }
-
         }
         tbl.appendChild(row);
-
-
 
         var mytable = document.getElementById("calendar-body");
         var myrows = mytable.getElementsByTagName("tr");
@@ -87,15 +99,6 @@ function showCalendar(month, year) {
         var lastcell = mycells[mycells.length - 1].textContent;
         if (lastcell == daysInMonth(month, year)) break;
     }
-
-
-    if ((daysInMonth(month, year) + firstDay) % 7 != 0 && sheet.cssRules.length == 38) {
-        sheet.insertRule("#calendar tr:nth-last-child(2) td:last-child {border-bottom-right-radius: 10px;}", 38);
-    }
-    else if ((daysInMonth(month, year) + firstDay) % 7 == 0) {
-        sheet.deleteRule(38)
-    }
-
 }
 
 function daysInMonth(iMonth, iYear) {
