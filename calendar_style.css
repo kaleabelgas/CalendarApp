@@ -26,7 +26,6 @@ html, body{
     margin: 0%;
 }
 
-
 .front-page{
     padding-top: 5%;
     text-align: center;
@@ -147,6 +146,7 @@ a{
 #front-page-todo{
     margin-top: 1rem;
     padding: 0%;
+    white-space: pre-wrap;
 }
 
 #calendar table{
