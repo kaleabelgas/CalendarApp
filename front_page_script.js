@@ -13,7 +13,15 @@ function renderCurrentDay(){
     todayDisplay.innerHTML = `${currentYear}, ${currentMonth} ${currentDay}`;
 
     frontPageArea = document.getElementById("front-page-todo");
-    frontPageArea.innerHTML = localStorage.getItem(`${currentYear}-${currentMonth}-${currentDay}`);
+
+    todoToday = localStorage.getItem(`${currentYear}-${currentMonth}-${currentDay}`);
+
+    if(todoToday == "" || todoToday == null){
+        frontPageArea.innerHTML = "Nothing for this day! What do you want to do?";
+    }
+    else{
+        frontPageArea.innerHTML = localStorage.getItem(`${currentYear}-${currentMonth}-${currentDay}`);
+    }
 }
 
 function update(){
