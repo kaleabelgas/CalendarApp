@@ -24,22 +24,21 @@ var selectedDay;
 var selectedMonth;
 var selectedYear;
 
-function saveWrittenReminderToJSON(element) {
+function saveWrittenReminderToBrowser(element) {
     localStorage.setItem(`${selectedYear}-${selectedMonth}-${selectedDay}`, element.value);
-    console.log(`${selectedYear}-${selectedMonth}-${selectedDay}`);
+    showCalendar(currentMonth, currentYear);
+    selectCurrentDate(currentYear, currentMonth, selectedDay);
 }
 
 function changeDateSidebar(date) {
     dateSelected = document.getElementById("date-sidebar");
     var currentDay = date.getDate();
-    var currentMonth = date.toLocaleDateString("default", { month: "long" });
+    var currentMonth = months[date.getMonth()];
     var currentYear = date.getFullYear();
     dateSelected.innerHTML = `${currentMonth} ${currentDay}, ${currentYear}`;
 
     reminderOfDate = document.getElementById("todolist");
     reminderOfDate.value = localStorage.getItem(`${currentYear}-${currentMonth}-${currentDay}`);
-    console.log(`${currentYear}-${currentMonth}-${currentDay}`);
-    console.log(`${selectedYear}-${selectedMonth}-${selectedDay}`);
 
     selectedDay = currentDay;
     selectedMonth = currentMonth;
@@ -127,9 +126,23 @@ function showCalendar(month, year) {
                         cell.setAttribute("style", "border-bottom-right-radius: 10px");
                     }
                 }
-
+                reminderContent = localStorage.getItem(`${year}-${months[month]}-${date}`);
+                
                 dateDiv.appendChild(cellText);
                 link.appendChild(dateDiv);
+
+                if(reminderContent != null && reminderContent != ""){
+                    reminderText = document.createTextNode(reminderContent);
+
+                    reminderP = document.createElement("p");
+                    reminderP.appendChild(reminderText); 
+
+                    reminderP.setAttribute("class", "reminder-on-calendar user-text");
+
+                    link.appendChild(reminderP);
+                }
+
+                
                 cell.appendChild(link);
                 row.appendChild(cell);
                 date++;
@@ -141,7 +154,8 @@ function showCalendar(month, year) {
         var myrows = mytable.getElementsByTagName("tr");
         var lastrow = myrows[myrows.length - 1];
         var mycells = lastrow.getElementsByTagName("td");
-        var lastcell = mycells[mycells.length - 1].textContent;
+        var lastcell = mycells[mycells.length - 1].childNodes[0].childNodes[0].textContent;
+        console.log(`${date} - ${lastcell}`); 
         if (lastcell == daysInMonth(month, year)) break;
     }
 }
