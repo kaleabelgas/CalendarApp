@@ -1,6 +1,6 @@
 today = new Date();
-currentMonth = today.getMonth();
-currentYear = today.getFullYear();
+var currentMonth = today.getMonth();
+var currentYear = today.getFullYear();
 
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
@@ -25,40 +25,38 @@ var selectedMonth;
 var selectedYear;
 
 function saveWrittenReminderToBrowser(element) {
-    localStorage.setItem(`${selectedYear}-${selectedMonth}-${selectedDay}`, element.value);
+    localStorage.setItem(`${selectedYear}-${months[selectedMonth]}-${selectedDay}`, element.value);
     showCalendar(currentMonth, currentYear);
     selectCurrentDate(currentYear, currentMonth, selectedDay);
 }
 
 function changeDateSidebar(date) {
     dateSelected = document.getElementById("date-sidebar");
-    var currentDay = date.getDate();
-    var currentMonth = months[date.getMonth()];
-    var currentYear = date.getFullYear();
-    dateSelected.innerHTML = `${currentMonth} ${currentDay}, ${currentYear}`;
+    var _selectedDay = date.getDate();
+    var _selectedMonth = date.getMonth();
+    var _selectedYear = date.getFullYear();
+    dateSelected.innerHTML = `${months[_selectedMonth]} ${_selectedDay}, ${currentYear}`;
 
     reminderOfDate = document.getElementById("todolist");
-    reminderOfDate.value = localStorage.getItem(`${currentYear}-${currentMonth}-${currentDay}`);
+    reminderOfDate.value = localStorage.getItem(`${_selectedYear}-${months[_selectedMonth]}-${_selectedDay}`);
 
-    selectedDay = currentDay;
-    selectedMonth = currentMonth;
-    selectedYear = currentYear;
+    selectedDay = _selectedDay;
+    selectedMonth = _selectedMonth;
+    selectedYear = _selectedYear;
 }
 
 
 function selectCurrentDate(year, month, date) {
 
-    var previousSelected = document.getElementsByClassName("selected-date")[0];
-    if (previousSelected != undefined) {
-        previousSelected.classList.remove("selected-date");
+    if (document.querySelectorAll(".selected-date").length > 0) {
+        document.querySelectorAll(".selected-date").forEach(el => {
+            el.classList.remove("selected-date");
+        });
     }
 
-
-    var selectedDay = document.getElementById(`${year}-${month}-${date}`);
+    selectedDay = document.getElementById(`${year}-${month}-${date}`);
     selectedDay.querySelector("div").setAttribute("class", "selected-date");
     changeDateSidebar(new Date(year, month, date));
-
-
 }
 
 function goToToday() {
@@ -127,36 +125,44 @@ function showCalendar(month, year) {
                     }
                 }
                 reminderContent = localStorage.getItem(`${year}-${months[month]}-${date}`);
-                
+
                 dateDiv.appendChild(cellText);
                 link.appendChild(dateDiv);
 
-                if(reminderContent != null && reminderContent != ""){
+                if (reminderContent != null && reminderContent != "") {
                     reminderText = document.createTextNode(reminderContent);
 
                     reminderP = document.createElement("p");
-                    reminderP.appendChild(reminderText); 
+                    reminderP.appendChild(reminderText);
 
                     reminderP.setAttribute("class", "reminder-on-calendar user-text");
 
                     link.appendChild(reminderP);
                 }
 
-                
+
                 cell.appendChild(link);
                 row.appendChild(cell);
+
+
+
                 date++;
             }
+
         }
         tbl.appendChild(row);
+
+
 
         var mytable = document.getElementById("calendar-body");
         var myrows = mytable.getElementsByTagName("tr");
         var lastrow = myrows[myrows.length - 1];
         var mycells = lastrow.getElementsByTagName("td");
         var lastcell = mycells[mycells.length - 1].childNodes[0].childNodes[0].textContent;
-        console.log(`${date} - ${lastcell}`); 
         if (lastcell == daysInMonth(month, year)) break;
+    }
+    if (month === selectedMonth && year === selectedYear) {
+        selectCurrentDate(year, month, selectedDay);
     }
 }
 
