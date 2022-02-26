@@ -24,6 +24,8 @@ html, body{
     color:#303030;
     height: 100%;
     margin: 0%;
+    transition: all .2s ease;
+    -webkit-transition: all .2s ease;
 }
 
 .front-page{
@@ -71,6 +73,13 @@ h1.heading{
 a{
     color:#303030;
     text-decoration: none;
+    transition: all .4s ease;
+    -webkit-transition: all .4s ease;
+}
+
+a:hover{
+    background-color:rgb(235, 235, 235);
+    border-radius:10px;
 }
 
 .flex-container{
@@ -245,13 +254,13 @@ textarea .user-text{
 }
 
 form{
+    margin-bottom: 5%;
     height: 75%;
 }
 
 #home-button{
     margin: auto;
     display: block;
-    margin-top: 1rem;
 }
 
 ::-webkit-scrollbar{
