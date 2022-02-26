@@ -245,7 +245,13 @@ textarea .user-text{
 }
 
 form{
-    height: 80%;
+    height: 75%;
+}
+
+#home-button{
+    margin: auto;
+    display: block;
+    margin-top: 1rem;
 }
 
 ::-webkit-scrollbar{
